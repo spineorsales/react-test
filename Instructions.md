@@ -9,7 +9,7 @@
 ``NOTE: Redux is already implented in the given project. Examples of Actions and reducers are added you can check the samples  in the given folder. Below are the paths or reducer annd actions
     actions: src/actions
     reducers: src/reducers
-Check the postman collections ion the root directory and import into postman. if
+Check the postman collections in the root directory "spineor-react-test.postman_collection.json" and import into postman. if
 you don't know how to do it. here is the link``
 
 https://learning.postman.com/docs/postman/collection-runs/working-with-data-files/
