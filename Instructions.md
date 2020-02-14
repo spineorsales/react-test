@@ -1,11 +1,11 @@
 1: fork this repo
 2: After finishing the task you can create  pull request to above URL
-Note: "if you dont know how to create pull request then you can zip the project and send to the given email id:example@gmail.com" as attachment
+Note: "if you dont know how to create pull request then you can zip the project and send to the given email id:hr.spineor@gmail.com" as attachment
 Instructions
 NOTE: Redux is already implented in the given project. Examples of Actions and reducers are added you can check the samples  in the given folder. Below are the paths or reducer annd actions
     actions: src/actions
     reducers: src/reducers
-Check the attachment of postman collections you can simply download and import into postman. if
+Check the postman collections ion the root directory and import into postman. if
 you don't know how to do it. here is the link
 https://learning.postman.com/docs/postman/collection-runs/working-with-data-files/
 TASK:
