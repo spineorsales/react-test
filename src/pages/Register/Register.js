@@ -1,38 +1,90 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import styles from "./Register.scss";
+import {emailChanged,passwordChanged,userChanged,createUser} from '../../actions/example/actionCreators';
 
-const Register = () => {
-  //Todo Product listing
-  return (
-    <div>
-    <form>
-      <div className="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname"  />
-        <label for="psw"><b>Email</b></label>
-        <input type="email" placeholder="email" name="email" />
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Password" name="psw" />
-        <label for="psw"><b>Repeat Passwor</b></label>
-        <input type="password" placeholder="Repeat Passwor" name="psw" />
-        <label>
-          <input type="checkbox" checked="checked" name="remember" /> Remember me
-        </label>
-        <button type="submit">Login</button>
-        
-      </div>
-    </form>
-  </div>
-  )
+class Register extends Component {
+  
+onNameChange(text){
+  this.props.userChanged(text.target.value);
+}
+onEmailChange(text){
+  this.props.emailChanged(text.target.value);
+}
+onPassChange(text){
+  this.props.passwordChanged(text.target.value);
+}
+onConfPassChange(text){
+  this.props.passwordChanged(text.target.value);
+}
+
+onSubmit(){
+    
+  const {username, email, password } = this.props;
+  this.props.createUser({username, email, password });
+
+}
+
+  render(){
+    return (
+      <div>
+      <form   onSubmit={this.onSubmit.bind(this)}>
+        <div className="container">
+          <label ><b>Username</b></label>
+          <input 
+          type="text" 
+          placeholder="Enter Username"
+           name="username"  
+           onChange={this.onNameChange.bind(this)}
+           value={this.props.username}
+           />
+          <label ><b>Email</b></label>
+          <input 
+          type="email" 
+          placeholder="email" 
+          name="email" 
+          onChange={this.onEmailChange.bind(this)}
+           value={this.props.email}
+          />
+          <label ><b>Password</b></label>
+          <input 
+          type="password" 
+          placeholder="Password" 
+          name="password" 
+          onChange={this.onPassChange.bind(this)}
+           value={this.props.password}
+          />
+          <label ><b>Repeat Passwor</b></label>
+          <input 
+          type="password"
+           placeholder="Repeat Passwor" 
+           name="password" 
+           onChange={this.onConfPassChange.bind(this)}
+           value={this.props.password}
+           />
+          {/* <label>
+            <input type="checkbox" checked="checked" name="remember" /> Remember me
+          </label> */}
+          <button type="submit">Login</button>
+          
+        </div>
+      </form>
+    </div>
+    )
+  }
+  
+}
+
+const mapStateToProps = ({auth}) => {
+  const { email, password,username }=auth;
+  return { email,password,username };
 };
 
-const mapStateToProps = state => {
-  return {
-    ...state
-  };
-};
 
-const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, {
+  emailChanged,
+  passwordChanged,
+  createUser,
+  userChanged
+})(Register);
